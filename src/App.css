@@ -1,38 +1,196 @@
+:root {
+  --primary-bg: #181c24;
+  --secondary-bg: #23283b;
+  --accent: #3d5af1;
+  --accent2: #21e6c1;
+  --accent3: #21e6c1; /* teal for + - buttons */
+  --text-main: #eaeaea;
+  --text-muted: #a0a0a0;
+  --card-bg: #23283b;
+  --bar-bg: linear-gradient(90deg, #3d5af1 0%, #21e6c1 100%);
+  --bar-shadow: 0 2px 8px rgba(33, 230, 193, 0.2);
+}
+
+body {
+  background: var(--primary-bg);
+  color: var(--text-main);
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  transition: background 0.5s;
+}
+
 .App {
   text-align: center;
+  background: var(--primary-bg);
+  min-height: 100vh;
+  transition: background 0.5s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.page-header_title {
+  color: var(--text-main); /* white heading */
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-top: 1em;
+  text-shadow: 0 2px 8px var(--accent2);
+  animation: fadeInDown 1s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-40px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.pannel {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.container-small {
+  min-width: 180px;
+  background: var(--card-bg);
+  border-radius: 1em;
+  box-shadow: 0 2px 12px rgba(61, 90, 241, 0.08);
+  padding: 1em;
+  color: var(--text-main);
+  transition: box-shadow 0.3s;
+}
+
+.container-small:hover {
+  box-shadow: 0 4px 24px rgba(33, 230, 193, 0.15);
+}
+
+/* Highlight Form headings */
+.MuiFormLabel-root {
+  color: var(--accent2) !important;
+  font-weight: bold !important;
+  letter-spacing: 1px;
+  font-size: 1.1em;
+  text-shadow: 0 2px 8px var(--accent);
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--secondary-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text-main);
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--accent2);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.frame {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  height: 200px;
+  margin: 5em 0;
+}
+
+.card {
+  border-radius: 2em;
+  padding: 0 1em;
+  background: var(--card-bg);
+  box-shadow: 0 2px 12px rgba(61, 90, 241, 0.08);
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 24px rgba(33, 230, 193, 0.15);
+}
+
+.bar {
+  background: var(--bar-bg);
+  box-shadow: var(--bar-shadow);
+  border-radius: 0.5em;
+  transition: height 0.3s, background 0.3s;
+  animation: barGrow 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+@keyframes barGrow {
+  from { height: 0; opacity: 0; }
+  to { opacity: 1; }
+}
+
+.text {
+  color: var(--text-main);
+  background: transparent;
+  border: none;
+  font-size: 1em;
+  text-align: center;
+}
+
+/* Align + - buttons vertically and use teal color */
+.quantity-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-nav .quantity-button {
+  background: var(--accent3);
+  color: var(--primary-bg);
+  border-radius: 0.5em;
+  margin: 0.2em 0;
+  padding: 0.2em 0.6em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(33, 230, 193, 0.15);
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-nav .quantity-button:hover {
+  background: var(--accent);
+  color: var(--text-main);
+  transform: scale(1.1);
+}
+
+.control-pannel {
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 1.5em;
+}
+
+.controller {
+  background: var(--accent);
+  color: var(--text-main);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  box-shadow: 0 2px 8px rgba(61, 90, 241, 0.15);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.controller:hover {
+  background: var(--accent2);
+  color: var(--primary-bg);
+  transform: scale(1.1) rotate(-8deg);
 }
